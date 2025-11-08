@@ -1,1 +1,1136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estrategias para mejorar la seguridad en Naucalpan</title>
+
+  <!-- Tipografía moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-bg: #050814;
+      --color-bg-alt: #0c1124;
+      --color-primary: #2563eb;
+      --color-primary-soft: rgba(37, 99, 235, 0.12);
+      --color-accent: #f97316;
+      --color-text: #e5e7eb;
+      --color-muted: #9ca3af;
+      --color-card: #111827;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%, #000 100%);
+      color: var(--color-text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(2, 6, 23, 0.85);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #f97316 0, #2563eb 40%, #0f172a 100%);
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    .nav-links a {
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      color: var(--color-muted);
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(37, 99, 235, 0.16);
+      color: #e5e7eb;
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--color-accent), #facc15);
+      color: #111827;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 10px 20px rgba(248, 181, 0, 0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(248, 181, 0, 0.45);
+    }
+
+    /* LAYOUT GENERAL */
+    .main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3.5rem 1rem;
+    }
+
+    .section-header {
+      max-width: 680px;
+      margin-bottom: 2rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      font-size: 0.75rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.75rem;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #f97316 0, #2563eb 60%);
+    }
+
+    .section-title {
+      font-size: clamp(1.65rem, 2.1vw + 1rem, 2.2rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--color-muted);
+      font-size: 0.98rem;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3.5rem 1rem 3.25rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 0.74rem;
+      color: var(--color-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-badge span {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3.1vw + 1rem, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #f97316, #facc15, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      color: var(--color-muted);
+      font-size: 0.98rem;
+      max-width: 34rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .btn-primary {
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border: none;
+      color: #e5e7eb;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
+      transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 22px 50px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-ghost {
+      padding: 0.8rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: transparent;
+      color: var(--color-muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.8);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+    }
+
+    .hero-meta-item span {
+      display: block;
+      font-weight: 600;
+      color: #e5e7eb;
+      margin-bottom: 0.15rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%, #000 100%);
+      border-radius: 24px;
+      padding: 1.4rem 1.3rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-card-subtitle {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-bottom: 1rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .pill {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.78rem;
+    }
+
+    .stat {
+      flex: 1;
+    }
+
+    .stat-label {
+      color: var(--color-muted);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-value {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      inset: -40%;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.25);
+      opacity: 0.6;
+    }
+
+    .hero-badge-floating {
+      position: absolute;
+      bottom: -0.5rem;
+      right: -0.5rem;
+      transform: translate(-10%, -10%);
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 16px;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.7rem;
+      max-width: 210px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-badge-floating span {
+      display: block;
+      font-size: 0.72rem;
+      color: #e5e7eb;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    /* CARDS GENERALES */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      background: radial-gradient(circle at top, rgba(30, 64, 175, 0.3), rgba(15, 23, 42, 0.98));
+      border-radius: var(--radius-lg);
+      padding: 1.3rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.65);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--color-muted);
+    }
+
+    .card-body {
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    .card-list {
+      margin-top: 0.5rem;
+      padding-left: 1.1rem;
+    }
+
+    .card-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* CRONOGRAMA */
+    .timeline {
+      border-left: 1px solid rgba(148, 163, 184, 0.4);
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.3rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.55rem;
+      top: 0.35rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #f97316 0, #2563eb 60%);
+      box-shadow: 0 0 12px rgba(37, 99, 235, 0.8);
+    }
+
+    .timeline-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-text {
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    /* EVALUACIÓN */
+    .standards-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .badge-scenario {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-good {
+      background: rgba(22, 163, 74, 0.12);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+    }
+
+    .badge-bad {
+      background: rgba(220, 38, 38, 0.12);
+      color: #fca5a5;
+      border: 1px solid rgba(248, 113, 113, 0.35);
+    }
+
+    .standard-list {
+      padding-left: 1.1rem;
+      font-size: 0.88rem;
+      color: var(--color-muted);
+    }
+
+    .standard-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* CTA FINAL */
+    .cta {
+      background: radial-gradient(circle at top, rgba(37, 99, 235, 0.25), rgba(15, 23, 42, 1));
+      border-radius: 22px;
+      padding: 1.8rem 1.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 1.5rem;
+      align-items: center;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);
+    }
+
+    .cta-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta-text {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-note {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .cta-contact {
+      text-align: right;
+      font-size: 0.86rem;
+      color: var(--color-muted);
+    }
+
+    .cta-contact a {
+      color: #bfdbfe;
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    .cta-contact .small {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      padding: 1.2rem 1rem 2rem;
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .footer strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-visual {
+        order: -1;
+      }
+      .grid-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .cta {
+        grid-template-columns: minmax(0, 1fr);
+        text-align: left;
+      }
+      .cta-contact {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .hero {
+        padding-top: 2.2rem;
+      }
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .standards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="logo">
+          <div class="logo-mark"></div>
+          <span>Seguridad Naucalpan</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#proyecto">Proyecto</a>
+          <a href="#objetivos">Objetivos</a>
+          <a href="#actividades">Actividades</a>
+          <a href="#cronograma">Cronograma</a>
+          <a href="#evaluacion">Evaluación</a>
+        </nav>
+        <button class="nav-cta" onclick="document.getElementById('participa').scrollIntoView({behavior:'smooth'})">
+          Participa
+          <span>↗</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- HERO -->
+      <section class="hero">
+        <div>
+          <div class="hero-badge">
+            Proyecto comunitario · <span>Naucalpan, Edo. Méx.</span>
+          </div>
+          <h1 class="hero-title">
+            Estrategias para mejorar la <span class="hero-highlight">seguridad y la confianza</span> en Naucalpan.
+          </h1>
+          <p class="hero-text">
+            Iniciativa ciudadana que busca reducir la inseguridad y la violencia que afectan a estudiantes, trabajadores
+            y familias, recuperando espacios públicos, fortaleciendo la prevención y promoviendo la organización vecinal.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="document.getElementById('proyecto').scrollIntoView({behavior:'smooth'})">
+              Ver el proyecto completo
+              <span>↓</span>
+            </button>
+            <button class="btn-ghost" onclick="document.getElementById('participa').scrollIntoView({behavior:'smooth'})">
+              Quiero participar
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span>Enfoque</span>
+              Prevención, espacios públicos y comunidad
+            </div>
+            <div class="hero-meta-item">
+              <span>Duración</span>
+              6–8 meses de trabajo organizado
+            </div>
+            <div class="hero-meta-item">
+              <span>Participantes</span>
+              Vecinos, escuelas y autoridades
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-orbit"></div>
+            <h3 class="hero-card-title">Mapa del proyecto</h3>
+            <p class="hero-card-subtitle">Naucalpan · Seguridad y convivencia</p>
+
+            <div class="pill-row">
+              <div class="pill">Talleres de prevención</div>
+              <div class="pill">Recuperación de parques</div>
+              <div class="pill">Comités vecinales</div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat">
+                <div class="stat-label">Escuelas</div>
+                <div class="stat-value">3+ instituciones</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Vecinos</div>
+                <div class="stat-value">50+ por jornada</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Comités</div>
+                <div class="stat-value">5 colonias meta</div>
+              </div>
+            </div>
+
+            <p class="hero-card-subtitle">
+              Un plan con diagnóstico, acciones, cronograma y estándares de evaluación claros para medir el impacto.
+            </p>
+
+            <div class="hero-badge-floating">
+              <span>Objetivo general</span>
+              Mejorar la seguridad y la confianza de la comunidad mediante vigilancia, alumbrado público
+              y participación vecinal organizada.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EL PROYECTO -->
+      <section id="proyecto" class="section">
+        <div class="section-header">
+          <div class="eyebrow">
+            <div class="eyebrow-dot"></div>
+            El proyecto
+          </div>
+          <h2 class="section-title">Un problema real, una respuesta comunitaria organizada.</h2>
+          <p class="section-subtitle">
+            En Naucalpan existe un problema serio de inseguridad y violencia que afecta la tranquilidad, la movilidad
+            y la convivencia de estudiantes, trabajadores y familias. Este proyecto busca recuperar espacios públicos,
+            reducir robos y fortalecer la unión comunitaria a través de acciones preventivas y colaborativas.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">¿Por qué es importante?</h3>
+              <span class="card-tag">Contexto</span>
+            </div>
+            <div class="card-body">
+              <p>
+                La inseguridad limita el uso de calles, parques y escuelas, genera miedo y rompe la confianza entre
+                vecinos. Atenderla desde la comunidad permite:
+              </p>
+              <ul class="card-list">
+                <li>Reforzar la presencia vecinal en zonas de riesgo.</li>
+                <li>Impulsar la cultura de la prevención y el autocuidado.</li>
+                <li>Crear canales de comunicación con autoridades.</li>
+                <li>Dar nuevos usos positivos a espacios abandonados.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Propósito del proyecto</h3>
+              <span class="card-tag">Propósito</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Mejorar la seguridad y la confianza de la comunidad de Naucalpan mediante acciones de vigilancia
+                coordinada, fortalecimiento del alumbrado público y participación vecinal activa, reduciendo situaciones
+                de violencia y riesgo en las colonias intervenidas.
+              </p>
+              <p style="margin-top:0.5rem;">
+                El proyecto se desarrolla con la colaboración de vecinos, comités vecinales, autoridades municipales y
+                escuelas locales.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- OBJETIVOS -->
+      <section id="objetivos" class="section">
+        <div class="section-header">
+          <div class="eyebrow">
+            <div class="eyebrow-dot"></div>
+            Objetivos
+          </div>
+          <h2 class="section-title">De la prevención a la organización vecinal.</h2>
+          <p class="section-subtitle">
+            El proyecto se construye alrededor de un objetivo general y tres objetivos específicos que guían todas las
+            actividades, tiempos y recursos.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Objetivo general</h3>
+              <span class="card-tag">Meta central</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Mejorar la seguridad y confianza de la comunidad de Naucalpan mediante acciones de vigilancia,
+                alumbrado público y participación vecinal, reduciendo la inseguridad que afecta a estudiantes,
+                trabajadores y familias.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Prevención en escuelas</h3>
+              <span class="card-tag">Objetivo 1</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Fortalecer la educación en prevención durante los próximos seis meses, a través de talleres
+                y pláticas sobre seguridad, autocuidado y denuncia ciudadana, dirigidos a estudiantes, docentes
+                y padres de familia.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Espacios públicos y comités</h3>
+              <span class="card-tag">Objetivos 2 y 3</span>
+            </div>
+            <div class="card-body">
+              <ul class="card-list">
+                <li>Recuperar parques y áreas comunes en al menos dos colonias.</li>
+                <li>Realizar jornadas de limpieza, pintura y actividades culturales.</li>
+                <li>Formar cinco comités vecinales activos antes de finalizar el año.</li>
+                <li>Crear canales de comunicación y rondines con autoridades.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ACTIVIDADES Y COLABORADORES -->
+      <section id="actividades" class="section">
+        <div class="section-header">
+          <div class="eyebrow">
+            <div class="eyebrow-dot"></div>
+            Actividades y participación
+          </div>
+          <h2 class="section-title">Un plan en fases, con tareas y recursos claros.</h2>
+          <p class="section-subtitle">
+            El proyecto se organiza en fases: diagnóstico, desarrollo y concreción, con actividades específicas,
+            recursos definidos y responsables asignados para facilitar el seguimiento.
+          </p>
+        </div>
+
+        <div class="grid grid-2" style="margin-bottom:1.5rem;">
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Fase 1 · Diagnóstico de la problemática</h3>
+              <span class="card-tag">Previas</span>
+            </div>
+            <div class="card-body">
+              <p><strong>Objetivo:</strong> identificar las colonias con mayor inseguridad.</p>
+              <ul class="card-list">
+                <li>Aplicar encuestas a vecinos y registrar respuestas.</li>
+                <li>Reunirse con autoridades locales para ubicar zonas críticas.</li>
+                <li>Revisar estadísticas en línea sobre seguridad en Naucalpan.</li>
+                <li>Elaborar un resumen de los principales problemas detectados.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Fase 2 · Desarrollo de acciones</h3>
+              <span class="card-tag">Ejecución</span>
+            </div>
+            <div class="card-body">
+              <p><strong>Incluye dos grandes bloques:</strong></p>
+              <ul class="card-list">
+                <li><strong>Talleres de prevención en escuelas</strong>: coordinación de fechas, diseño de material y realización de sesiones con estudiantes, docentes y padres.</li>
+                <li><strong>Recuperación de espacios públicos</strong>: limpieza, pintura, reparación de juegos y documentación del antes y después en parques y áreas comunes.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Fase 3 · Organización y seguimiento</h3>
+              <span class="card-tag">Concreción</span>
+            </div>
+            <div class="card-body">
+              <ul class="card-list">
+                <li>Formar comités vecinales en cinco colonias.</li>
+                <li>Crear grupos de comunicación en WhatsApp o Facebook.</li>
+                <li>Difundir reuniones mediante carteles y redes.</li>
+                <li>Aplicar encuestas de satisfacción y analizar resultados.</li>
+                <li>Presentar conclusiones a la comunidad y proponer mejoras.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Colaboradores clave</h3>
+              <span class="card-tag">Participación</span>
+            </div>
+            <div class="card-body">
+              <p><strong>Perfil de colaboradores:</strong></p>
+              <ul class="card-list">
+                <li><strong>Docentes:</strong> apoyo en talleres educativos.</li>
+                <li><strong>Padres de familia:</strong> impulso a la participación escolar.</li>
+                <li><strong>Vecinos y jóvenes voluntarios:</strong> trabajo comunitario y vigilancia.</li>
+                <li><strong>Autoridades locales:</strong> coordinación de acciones y seguridad.</li>
+              </ul>
+              <p style="margin-top:0.5rem;">
+                Se aprovechan redes sociales, formularios en línea y materiales visuales para convocar y mantener informada a la comunidad.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CRONOGRAMA -->
+      <section id="cronograma" class="section">
+        <div class="section-header">
+          <div class="eyebrow">
+            <div class="eyebrow-dot"></div>
+            Cronograma
+          </div>
+          <h2 class="section-title">Un calendario realista para avanzar paso a paso.</h2>
+          <p class="section-subtitle">
+            El plan se estructura en fases con tiempos definidos para cada actividad, considerando diagnóstico, ejecución,
+            organización vecinal y evaluación final.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title" style="margin-bottom:0.5rem;">Línea de tiempo del proyecto</h3>
+          <p class="card-body">
+            Las fechas son de referencia y pueden ajustarse según acuerdos con vecinos, escuelas y autoridades.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Fase 1 · Diagnóstico</div>
+              <div class="timeline-meta">Duración estimada: 7 días</div>
+              <div class="timeline-text">
+                Recorridos en colonias, encuestas a vecinos, reuniones con autoridades y análisis de estadísticas para
+                comprender la situación actual.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Fase 2 · Talleres de prevención</div>
+              <div class="timeline-meta">Duración estimada: 14 días</div>
+              <div class="timeline-text">
+                Coordinación con escuelas, diseño de materiales, realización de talleres y recolección de comentarios
+                para medir el impacto en estudiantes, docentes y familias.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Fase 2 · Recuperación de espacios públicos</div>
+              <div class="timeline-meta">Duración estimada: 21 días</div>
+              <div class="timeline-text">
+                Identificación de parques y áreas a intervenir, organización de cuadrillas de limpieza, pintura y
+                reparación, además de registro visual del antes y después.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Fase 3 · Organización vecinal</div>
+              <div class="timeline-meta">Duración estimada: 14 días</div>
+              <div class="timeline-text">
+                Formación de comités vecinales, creación de grupos de comunicación y coordinación de las primeras juntas
+                para mantener vivo el proyecto.
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-title">Fase final · Seguimiento y evaluación</div>
+              <div class="timeline-meta">Duración estimada: 7 días</div>
+              <div class="timeline-text">
+                Aplicación de encuestas de evaluación, análisis de resultados, presentación de conclusiones y propuesta
+                de mejoras para futuras acciones.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVALUACIÓN -->
+      <section id="evaluacion" class="section">
+        <div class="section-header">
+          <div class="eyebrow">
+            <div class="eyebrow-dot"></div>
+            Evaluación y estándares
+          </div>
+          <h2 class="section-title">Cómo sabremos que el proyecto está funcionando.</h2>
+          <p class="section-subtitle">
+            Se definen escenarios, criterios y estándares de calidad, cantidad y tiempo para medir resultados,
+            detectar problemas y ajustar el plan cuando sea necesario.
+          </p>
+        </div>
+
+        <div class="standards-grid">
+          <article class="card">
+            <div class="badge-scenario badge-good">Escenario ideal</div>
+            <div class="card-body">
+              <p>
+                Todas las fases se desarrollan en los tiempos planeados, hay participación activa de vecinos, alumnos y
+                autoridades; se realizan los talleres, se recuperan espacios públicos y se forman comités vecinales.
+              </p>
+              <ul class="standard-list" style="margin-top:0.5rem;">
+                <li>Comunicación constante entre todos los participantes.</li>
+                <li>Cumplimiento del cronograma definido.</li>
+                <li>Reconocimiento y motivación a los colaboradores.</li>
+                <li>Documentación de avances y resultados visibles.</li>
+              </ul>
+
+              <div class="badge-scenario badge-bad" style="margin-top:1rem;">Escenario crítico</div>
+              <p style="margin-top:0.3rem;">
+                Poca participación, cancelación de talleres, falta de recursos y dificultad para formar comités.
+              </p>
+              <ul class="standard-list" style="margin-top:0.4rem;">
+                <li>Reagendar actividades y redistribuir tareas.</li>
+                <li>Buscar más apoyo de vecinos y autoridades.</li>
+                <li>Reunirse para analizar fallas y corregirlas.</li>
+                <li>Ajustar fechas y recursos al nuevo contexto.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title" style="margin-bottom:0.4rem;">Estándares para medir resultados</h3>
+            <p class="card-body" style="margin-bottom:0.6rem;">
+              Los resultados se miden con estándares de calidad, cantidad y tiempo:
+            </p>
+            <ul class="standard-list">
+              <li>Cumplimiento de las fechas del cronograma.</li>
+              <li>Número de talleres realizados.</li>
+              <li>Porcentaje de participación de vecinos y alumnos.</li>
+              <li>Cantidad de comités vecinales formados.</li>
+              <li>Nivel de asistencia en cada actividad.</li>
+              <li>Disponibilidad de materiales y herramientas a tiempo.</li>
+              <li>Cumplimiento de tareas asignadas.</li>
+              <li>Calidad de la comunicación entre equipo y autoridades.</li>
+              <li>Nivel de satisfacción de los participantes.</li>
+              <li>Mejoras visibles en los espacios públicos intervenidos.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- CTA PARTICIPA -->
+      <section id="participa" class="section" style="padding-bottom:1.5rem;">
+        <div class="cta">
+          <div>
+            <h2 class="cta-title">Súmate a la construcción de un Naucalpan más seguro.</h2>
+            <p class="cta-text">
+              El éxito de este proyecto depende de la participación de la comunidad. Si eres vecino, estudiante, madre o
+              padre de familia, docente o autoridad, puedes aportar ideas, tiempo o recursos para fortalecer estas
+              acciones.
+            </p>
+            <button class="btn-primary" onclick="window.location.href='mailto:tu-correo@example.com'">
+              Enviar correo para más información
+            </button>
+            <p class="cta-note">
+              Puedes proponer nuevas actividades, compartir necesidades de tu colonia o ayudar a organizar los comités vecinales.
+            </p>
+          </div>
+          <div class="cta-contact">
+            <div class="small">Contacto del responsable del proyecto</div>
+            <!-- Cambia el correo y el enlace de WhatsApp por tus datos reales -->
+            <p style="margin-top:0.4rem;">
+              Correo:
+              <br />
+              <a href="mailto:tu-correo@example.com">tu-correo@example.com</a>
+            </p>
+            <p style="margin-top:0.5rem;">
+              WhatsApp:
+              <br />
+              <a href="https://wa.me/5215500000000" target="_blank" rel="noopener">https://wa.me/5215500000000</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          Proyecto comunitario · <strong>Estrategias para mejorar la seguridad en Naucalpan</strong>
+        </div>
+        <div>
+          Desarrollado por <strong>José Alberto Juanico Rodríguez</strong> · Módulo 23 · G40-95
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
 
